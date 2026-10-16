@@ -1,0 +1,8 @@
+{
+  "scheme": "https",
+  "headers": {
+    "Strict-Transport-Security": "max-age=0",
+    "X-Content-Type-Options": "nosniff",
+    "Content-Security-Policy-Report-Only": "default-src 'self'"
+  }
+}
