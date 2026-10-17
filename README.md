@@ -1,10 +1,18 @@
 # HTTP Header Review
 
+[![Testes Python](https://github.com/Yuurih44/http-header-review/actions/workflows/tests.yml/badge.svg)](https://github.com/Yuurih44/http-header-review/actions/workflows/tests.yml)
+![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+
 CLI Python para revisar uma captura local de cabeçalhos HTTP em JSON. Aplica três verificações explícitas: HSTS, `X-Content-Type-Options` e presença de CSP. Não acessa sites, não faz varreduras e não atribui uma nota geral de segurança.
 
 Projeto educacional preparado com assistência do Codex para estudar configuração defensiva e limites de verificações automáticas.
 
 ## Executar
+
+```sh
+git clone https://github.com/Yuurih44/http-header-review.git
+cd http-header-review
+```
 
 Requer Python 3.10 ou superior, sem dependências externas:
 
@@ -14,6 +22,17 @@ python -m unittest -v
 ```
 
 No Linux, use `python3` se necessário. A saída é JSON. Código de saída 0 significa análise concluída, mesmo com itens a revisar. Código 2 indica erro de leitura ou entrada inválida.
+
+## Instalação como comando
+
+A execução direta acima usa somente a biblioteca padrão. Para instalar o comando na sua máquina, dentro de um ambiente virtual:
+
+```sh
+python -m pip install .
+http-header-review --help
+```
+
+O pacote não está publicado no PyPI; a instalação usa este checkout local. Os arquivos de exemplo permanecem na pasta do repositório. Para preparar o ambiente de desenvolvimento, veja [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Entrada
 
@@ -55,3 +74,11 @@ Nove testes cobrem cabeçalhos ausentes, capitalização, HSTS em HTTP, idade ze
 ## Próximos passos
 
 Adicionar fixtures com múltiplas respostas e uma representação que preserve cabeçalhos repetidos, além de ampliar os testes. Esses recursos ainda não estão implementados.
+
+## Documentação do projeto
+
+- [Arquitetura e decisões](docs/ARCHITECTURE.md)
+- [Como contribuir](CONTRIBUTING.md)
+- [Histórico de alterações](CHANGELOG.md)
+
+Veja um [relatório real da demonstração](examples/report.json), gerado pelo exemplo incluído.

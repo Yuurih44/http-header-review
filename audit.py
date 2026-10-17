@@ -2,9 +2,9 @@
 
 import argparse
 import json
-from pathlib import Path
 import re
 import sys
+from pathlib import Path
 
 
 def audit(document):
@@ -38,12 +38,17 @@ def audit(document):
     else:
         ages = []
         for directive in hsts.split(";"):
-            match = re.fullmatch(r'max-age\s*=\s*(?:"([0-9]+)"|([0-9]+))',
-                                 directive.strip(), re.IGNORECASE)
+            match = re.fullmatch(
+                r'max-age\s*=\s*(?:"([0-9]+)"|([0-9]+))', directive.strip(), re.IGNORECASE
+            )
             if match:
                 ages.append(int(match.group(1) or match.group(2)))
         if len(ages) == 1 and ages[0] > 0:
-            add("hsts", "basic_check_passed", "Um max-age positivo encontrado; política completa requer revisão.")
+            add(
+                "hsts",
+                "basic_check_passed",
+                "Um max-age positivo encontrado; política completa requer revisão.",
+            )
         else:
             add("hsts", "review", "max-age ausente, duplicado, inválido ou zero.")
 
@@ -63,8 +68,11 @@ def audit(document):
     else:
         add("csp", "missing", "Content-Security-Policy ausente nesta captura.")
 
-    return {"scheme": scheme, "checks": checks,
-            "scope": "Captura fornecida; sem rede, sem nota de segurança e sem validação no navegador."}
+    return {
+        "scheme": scheme,
+        "checks": checks,
+        "scope": "Captura fornecida; sem rede, sem nota de segurança e sem validação no navegador.",
+    }
 
 
 def main(argv=None):

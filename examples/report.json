@@ -1,0 +1,21 @@
+{
+  "scheme": "https",
+  "checks": [
+    {
+      "rule": "hsts",
+      "status": "review",
+      "explanation": "max-age ausente, duplicado, inválido ou zero."
+    },
+    {
+      "rule": "nosniff",
+      "status": "basic_check_passed",
+      "explanation": "Valor nosniff encontrado."
+    },
+    {
+      "rule": "csp",
+      "status": "review",
+      "explanation": "Somente Report-Only encontrado; não substitui política aplicada."
+    }
+  ],
+  "scope": "Captura fornecida; sem rede, sem nota de segurança e sem validação no navegador."
+}
